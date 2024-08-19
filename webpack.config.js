@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
       entry: './src/index.js', // Punto de entrada de tu aplicación
       output: {
          filename: 'bundle.js', // Nombre del archivo de salida
@@ -24,10 +25,12 @@ module.exports = {
             }
          ]
       },
-      devtool: 'sourse-map', // Generar sourse para facilitar la depuración
+      devtool: 'source-map', // Generar sourse para facilitar la depuración
       devServer: {
-        contentBase: path.resolve(__dirname, 'dist'), //Carpeta desde donde obtenemos los archivos que mostramos al usuario
+        static: {
+            directory: path.resolve(__dirname, 'dist'),
+        },
         compress: true, // Habilitamos compresión gzip
         port: 9000, // Puerto del servidor de desarrollo
-      }  
-}
+      },  
+};
