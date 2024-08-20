@@ -81,7 +81,7 @@ var renderTasks = function renderTasks() {
     if (task.completed === true) {
       li.classList.add("completed");
     }
-    li.innerHTML = "\n            ".concat(task.text, "\n            <button class=\"delete\"> Eliminar </button>\n            <button class=\"toggle\"> ").concat(task.completed === false ? "Completar" : "Deshacer", " </button>\n        ");
+    li.innerHTML = "\n            ".concat(task.text, "\n            <div class=\"buttons\">\n                <button class=\"delete\"> Eliminar </button>\n                <button class=\"toggle\"> ").concat(task.completed === false ? "Completar" : "Deshacer", " </button>\n            </div>\n        ");
     taskList.appendChild(li);
   });
 };
@@ -170,13 +170,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("e, ", e.target.innerText);
     if (e.target.classList.contains("delete")) {
       console.log("entra delete");
-      var taskId = e.target.parentElement.getAttribute("data-id");
+      var taskId = e.target.closest('li').getAttribute("data-id");
       console.log("taskId, ", taskId);
       (0,_task__WEBPACK_IMPORTED_MODULE_1__.deletetask)(taskId);
       (0,_ui__WEBPACK_IMPORTED_MODULE_0__.renderTasks)();
     }
     if (e.target.classList.contains("toggle")) {
-      var _taskId = e.target.parentElement.getAttribute("data-id");
+      var _taskId = e.target.closest('li').getAttribute("data-id");
       (0,_task__WEBPACK_IMPORTED_MODULE_1__.toggleTask)(_taskId);
       (0,_ui__WEBPACK_IMPORTED_MODULE_0__.renderTasks)();
     }

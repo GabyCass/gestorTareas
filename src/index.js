@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("e, ", e.target.innerText)
         if(e.target.classList.contains("delete")) {
             console.log("entra delete")
-            const taskId = e.target.parentElement.getAttribute("data-id");
+            const taskId = e.target.closest('li').getAttribute("data-id");
             console.log("taskId, ", taskId)
             deletetask(taskId);
             renderTasks();
         }
 
         if(e.target.classList.contains("toggle")) {
-            const taskId = e.target.parentElement.getAttribute("data-id");
+            const taskId = e.target.closest('li').getAttribute("data-id");
             toggleTask(taskId);
             renderTasks();
         }
